@@ -9,10 +9,12 @@ custom implementation of linear through torch extension
 python setup.py install
 ```
 
-### Cleanup build (Important!)
+### Clean Up (Important!)
 ```bash
-python setup.py clean # this is scripted to remove many previous built artefacts
-# This does not uninstall. It is a good idea to clean for every build, just so recompile all required codes.
+python setup.py clean 
+# setup.py is scripted to remove many previous built artefacts
+# This does not uninstall. 
+# It may be a good idea to clean before a build, just so recompile all required codes.
 ```
 
 ### Uninstall
@@ -24,7 +26,7 @@ pip uninstall custom_linear
 ```python
 import torch #why we need this? torch load libc10.so
 import custom_linear
-dir(custom_linear) # method binded to kernel will be shown e.g. custom_linear
+dir(custom_linear) # method binded to kernel will be shown e.g. dense_linear
 
 ic=2
 oc=6
@@ -41,7 +43,7 @@ custom_linear.dense_linear(X, W)
 custom_linear.dense_linear(X, W, None)
 ```
 
-### Using Built Extension in nn.Module
+### Using Built Extension with subclass of nn.Module
 see ```layer/dense_linear.py```
 ```python
 import torch
